@@ -78,13 +78,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMaintenance = process.env.MAINTENANCE_MODE === "true";
   return (
     <html lang="en" dir="ltr" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <Navbar />
+          {!isMaintenance ? <Navbar /> : null}
+
           <main className="pt-20" role="main" aria-label="Main content">
             {children}
           </main>
