@@ -15,66 +15,69 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Akhilesh Upadhyay | Full-Stack Developer",
-  description:
-    "Creative Full-Stack Developer building problem-solving software using React, Next.js, Node.js and TypeScript.",
-  keywords: [
-    "Akhilesh Upadhyay",
-    "Full-Stack Developer",
-    "React Developer",
-    "Next.js Portfolio",
-    "TypeScript Developer",
-    "Software Engineer Hyderabad",
-    "Open Source Developer",
-    "Software Developer at ZerocodeHr",
-  ],
-  authors: [{ name: "Akhilesh Upadhyay", url: siteLinks.siteUrl }],
-  creator: "Akhilesh Upadhyay",
-  metadataBase: new URL(siteLinks.siteUrl),
-  openGraph: {
+// ✅ This will be re-evaluated on every build (and redeploy picks up envs)
+export async function generateMetadata(): Promise<Metadata> {
+  return {
     title: "Akhilesh Upadhyay | Full-Stack Developer",
     description:
-      "Creative Full-Stack Developer building scalable, problem-solving web applications.",
-    url: siteLinks.siteUrl,
-    siteName: "Akhilesh Upadhyay",
-    images: [
-      {
-        url: `${siteLinks.siteUrl}${siteLinks.ogImage}`,
-        width: 1200,
-        height: 630,
-        alt: "Akhilesh Upadhyay Portfolio",
-      },
+      "Creative Full-Stack Developer building problem-solving software using React, Next.js, Node.js and TypeScript.",
+    keywords: [
+      "Akhilesh Upadhyay",
+      "Full-Stack Developer",
+      "React Developer",
+      "Next.js Portfolio",
+      "TypeScript Developer",
+      "Software Engineer Hyderabad",
+      "Open Source Developer",
+      "Software Developer at ZerocodeHr",
     ],
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Akhilesh Upadhyay | Full-Stack Developer",
-    description:
-      "Creative Full-Stack Developer building problem-solving apps using React and Node.js",
-    creator: "@placeholder_handle",
-    images: [`${siteLinks.siteUrl}${siteLinks.ogImage}`],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    // if you want to support multiple devices
-    apple: "/apple-touch-icon.png",
-    shortcut: "/shortcut-icon.png",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-  },
-  alternates: {
-    canonical: siteLinks.siteUrl,
-  },
-  other: {
-    "google-site-verification": "DuLaY2ga7H-vTwFf5Xv5y6vfptvw9cZjmy2VN9E0UqU",
-  },
-};
+    authors: [{ name: "Akhilesh Upadhyay", url: siteLinks.siteUrl }],
+    creator: "Akhilesh Upadhyay",
+    metadataBase: new URL(siteLinks.siteUrl),
+    openGraph: {
+      title: "Akhilesh Upadhyay | Full-Stack Developer",
+      description:
+        "Creative Full-Stack Developer building scalable, problem-solving web applications.",
+      url: siteLinks.siteUrl,
+      siteName: "Akhilesh Upadhyay",
+      images: [
+        {
+          url: `${siteLinks.siteUrl}${siteLinks.ogImage}`,
+          width: 1200,
+          height: 630,
+          alt: "Akhilesh Upadhyay Portfolio",
+        },
+      ],
+      locale: "en_IN",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Akhilesh Upadhyay | Full-Stack Developer",
+      description:
+        "Creative Full-Stack Developer building problem-solving apps using React and Node.js",
+      creator: "@placeholder_handle",
+      images: [`${siteLinks.siteUrl}${siteLinks.ogImage}`],
+    },
+    icons: {
+      icon: "/favicon.ico",
+      // if you want to support multiple devices
+      apple: "/apple-touch-icon.png",
+      shortcut: "/shortcut-icon.png",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+    },
+    alternates: {
+      canonical: siteLinks.siteUrl,
+    },
+    other: {
+      "google-site-verification": "DuLaY2ga7H-vTwFf5Xv5y6vfptvw9cZjmy2VN9E0UqU",
+    },
+  };
+}
 
 export default function RootLayout({
   children,
