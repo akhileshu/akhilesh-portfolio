@@ -71,6 +71,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteLinks.siteUrl,
   },
+  other: {
+    "google-site-verification": "DuLaY2ga7H-vTwFf5Xv5y6vfptvw9cZjmy2VN9E0UqU",
+  },
 };
 
 export default function RootLayout({

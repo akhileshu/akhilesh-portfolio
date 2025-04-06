@@ -15,3 +15,5 @@ Set favicon in public/
 
 1. Add Static Pages Later
 Once you add actual pages (e.g. /blog, /projects/page.tsx, /contact), next-sitemap will auto-detect and include them.
+
+creator: "@placeholder_handle", // replace this or remove 
