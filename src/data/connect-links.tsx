@@ -24,5 +24,6 @@ export const connectLinks: connectLink[] = [
     href: siteLinks.resume,
     label: "Resume",
     icon: <FaFileAlt />,
+    visible:false
   },
 ];

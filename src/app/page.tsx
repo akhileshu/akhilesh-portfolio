@@ -8,7 +8,7 @@ import Experience from "@/components/app/experience";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-20 px-4 py-12 max-w-4xl mx-auto">
+    <div className="flex flex-col gap-20 px-4 py-12 max-w-4xl mx-auto">
       <Hero />
       <About />
       <Stack />
@@ -16,6 +16,6 @@ export default function Home() {
       <Experience />
       <Connect />
       <WirteToMe />
-    </main>
+    </div>
   );
 }

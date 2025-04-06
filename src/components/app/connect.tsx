@@ -7,11 +7,7 @@ import { filterVisible } from "@/lib/utils";
 
 export default function Connect() {
   return (
-    <Section
-      Icon={sectionIcons["connect"]}
-      id="connect"
-      className=""
-    >
+    <Section Icon={sectionIcons["connect"]} id="connect" className="">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-lg  mb-8">
           Love creative ideas? Curious about my work? Want to collaborate on

@@ -1,4 +1,3 @@
-"use client";
 import { experiences } from "@/data/experiences";
 import Section from "./section";
 import sectionIcons from "@/lib/section-icon";

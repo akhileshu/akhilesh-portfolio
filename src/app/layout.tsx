@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     "TypeScript Developer",
     "Software Engineer Hyderabad",
     "Open Source Developer",
+    "Software Developer at ZerocodeHr",
   ],
   authors: [{ name: "Akhilesh Upadhyay", url: siteLinks.siteUrl }],
   creator: "Akhilesh Upadhyay",
@@ -58,12 +59,20 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    // if you want to support multiple devices
+    apple: "/apple-touch-icon.png",
+    shortcut: "/shortcut-icon.png",
   },
   robots: {
     index: true,
     follow: true,
     nocache: false,
   },
+  alternates: {
+    canonical: siteLinks.siteUrl,
+  },
+  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+  themeColor: "#34d399",
 };
 
 export default function RootLayout({
@@ -72,14 +81,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" dir="ltr" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
           <Navbar />
-          <main className="pt-20 ">{children}</main>
+          <main className="pt-20" role="main" aria-label="Main content">
+            {children}
+          </main>
         </ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Akhilesh Upadhyay",
+              url: siteLinks.siteUrl,
+              jobTitle: "Full-Stack Developer",
+              sameAs: [siteLinks.github, siteLinks.linkedin, siteLinks.blog],
+            }),
+          }}
+        />
       </body>
     </html>
   );

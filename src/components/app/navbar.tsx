@@ -9,13 +9,18 @@ import { useScrollToHashOnLoad } from "@/lib/useScrollToHashOnLoad";
 import { cn, filterVisible } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 type SetCurrentHash = (value: SetStateAction<string>) => void;
 type isCurrent = (id: string) => boolean;
 export default function Navbar() {
   useScrollToHashOnLoad();
-  const [currentHash, setCurrentHash] = useState<string>(window.location.hash);
+ const [currentHash, setCurrentHash] = useState<string>("");
+
+ useEffect(() => {
+   setCurrentHash(window.location.hash);
+ }, []);
+
   const isCurrent: isCurrent = (id: string) => {
     return currentHash === `#${id}`;
   };

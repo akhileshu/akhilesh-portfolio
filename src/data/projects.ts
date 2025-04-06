@@ -7,7 +7,7 @@ export interface Project extends BaseItem {
   video: string | null; // prefer youtube link
   link: string;
   github: string;
-  releaseNotes: string;
+  releaseNotes: string | null;
   tech: string[];
 }
 export const projects: Project[] = [
@@ -19,7 +19,8 @@ export const projects: Project[] = [
     video: null,
     link: "https://video-blogs.vercel.app",
     github: "https://github.com/akhileshu/video-blogs",
-    releaseNotes: "https://github.com/akhileshu/video-blogs/releases",
+    // releaseNotes: "https://github.com/akhileshu/video-blogs/releases",
+    releaseNotes: null,
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "NextAuth.js", "Prisma"],
   },
   {

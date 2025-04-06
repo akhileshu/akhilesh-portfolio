@@ -5,7 +5,8 @@ export const siteLinks = {
   blog: "https://video-blogs.vercel.app",
   portfolioRepo: "https://github.com/akhileshu/akhilesh-portfolio",
   resume: "/cv.pdf",
-  profileImage: "/akhilesh.png",
+  // profileImage: "/akhilesh.png",
+  profileImage: "/akhilesh-trasnparent-bg.png",
   ogImage: "/og-image.png",
   noDataImage: "/no-data.png",
 };
