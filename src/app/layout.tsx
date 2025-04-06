@@ -71,8 +71,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteLinks.siteUrl,
   },
-  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
-  themeColor: "#34d399",
 };
 
 export default function RootLayout({
