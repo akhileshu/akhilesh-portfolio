@@ -1,15 +1,20 @@
+import { sections } from "@/data/sections";
 import { cn } from "@/lib/utils";
 import { ReactNode, ComponentProps } from "react";
 import { IconType } from "react-icons";
 
 type SectionProps = {
-  title: ReactNode;
+  id: string;
   children: ReactNode;
   Icon?: IconType;
 } & ComponentProps<"section">;
 
+const getSectionTitleById = (id: string): string | undefined => {
+  return sections.find((section) => section.id === id)?.title;
+};
+
 export default function Section({
-  title,
+  id,
   children,
   className,
   Icon,
@@ -23,10 +28,11 @@ export default function Section({
         className
       )}
       {...rest}
+      id={id}
     >
       <h2 className="text-2xl font-semibold mb-4 text-accent">
         {Icon ? <Icon className="mr-2 inline" /> : null}
-        {title}
+        {getSectionTitleById(id)}
       </h2>
       <div>{children}</div>
     </section>

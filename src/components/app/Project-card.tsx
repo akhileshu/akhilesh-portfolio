@@ -3,81 +3,76 @@ import { useState } from "react";
 
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt, FaFileAlt } from "react-icons/fa";
+import { Project } from "@/data/projects";
+import Link from "next/link";
+import TagList from "./tag-list";
+import ExpandableText from "./ExpandableText";
+import { siteLinks } from "@/data/links";
 
-export function ProjectCard({ p }) {
-  const [imgSrc, setImgSrc] = useState(p.image);
+export function ProjectCard({ project }: { project: Project }) {
+  const { description, github, image, link, releaseNotes, tech, title, video } =
+    project;
 
+  const [imgSrc, setImgSrc] = useState(image);
   return (
     <div
-      key={p.title}
+      key={title}
       className="border border-border rounded-lg overflow-hidden shadow-sm"
     >
-      {p.image && (
+      {image && (
         <Image
           src={imgSrc}
-          alt={p.title}
+          alt={title}
           width={500}
           height={280}
           className="w-full object-cover h-52"
-          onError={() =>
-            setImgSrc(
-              "https://images.unsplash.com/photo-1671655135696-ccf6f206d2b9?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            )
-          }
+          onError={() => setImgSrc(siteLinks.noDataImage)}
         />
       )}
 
       <div className="p-4 flex flex-col gap-2">
-        <h3 className="text-xl font-semibold">{p.title}</h3>
-        <p className="text-sm text-text-primary">{p.description}</p>
+        <h3 className="text-xl font-semibold">{title}</h3>
+        <ExpandableText className="" content={description} limit={200} />
 
-        {p.tech && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {p.tech.map((tag) => (
-              <span key={tag} className="bg-card text-xs px-2 py-1 rounded">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        {tech && <TagList tags={tech} />}
 
         <div className="flex items-center gap-4 mt-4 text-sm">
-          {p.link && (
-            <a
-              href={p.link}
+          {link && (
+            <Link
+              href={link}
               target="_blank"
               rel="noopener noreferrer"
               className="text-link flex items-center gap-1"
             >
               <FaExternalLinkAlt /> Live
-            </a>
+            </Link>
           )}
-          {p.github && (
-            <a
-              href={p.github}
+          {github && (
+            <Link
+              href={github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-link flex items-center gap-1"
             >
               <FaGithub /> Code
-            </a>
+            </Link>
           )}
-          {p.releaseNotes && (
-            <a
-              href={p.releaseNotes}
+          {releaseNotes && (
+            <Link
+              href={releaseNotes}
               target="_blank"
               rel="noopener noreferrer"
               className="text-link flex items-center gap-1"
             >
               <FaFileAlt /> Release Notes
-            </a>
+            </Link>
           )}
         </div>
 
-        {p.video && (
+        {video && (
           <div className="mt-4">
             <iframe
-              src={p.video}
+              src={video}
               className="w-full aspect-video rounded"
               allow="autoplay; encrypted-media"
               allowFullScreen

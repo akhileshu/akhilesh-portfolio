@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/lib/theme-context";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteLinks } from "@/data/links";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,18 +28,18 @@ export const metadata: Metadata = {
     "Software Engineer Hyderabad",
     "Open Source Developer",
   ],
-  authors: [{ name: "Akhilesh Upadhyay", url: "https://placeholder_domain" }],
+  authors: [{ name: "Akhilesh Upadhyay", url: siteLinks.siteUrl }],
   creator: "Akhilesh Upadhyay",
-  metadataBase: new URL("https://placeholder_domain"),
+  metadataBase: new URL(siteLinks.siteUrl),
   openGraph: {
     title: "Akhilesh Upadhyay | Full-Stack Developer",
     description:
       "Creative Full-Stack Developer building scalable, problem-solving web applications.",
-    url: "https://placeholder_domain",
+    url: siteLinks.siteUrl,
     siteName: "Akhilesh Upadhyay",
     images: [
       {
-        url: "https://placeholder_domain/og-image.png",
+        url: `${siteLinks.siteUrl}${siteLinks.ogImage}`,
         width: 1200,
         height: 630,
         alt: "Akhilesh Upadhyay Portfolio",
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Creative Full-Stack Developer building problem-solving apps using React and Node.js",
     creator: "@placeholder_handle",
-    images: ["https://placeholder_domain/og-image.png"],
+    images: [`${siteLinks.siteUrl}${siteLinks.ogImage}`],
   },
   icons: {
     icon: "/favicon.ico",

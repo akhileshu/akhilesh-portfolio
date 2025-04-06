@@ -1,37 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Akhilesh's Portfolio
 
-## Getting Started
+Welcome to my personal portfolio site — built with **Next.js 15**, **Tailwind CSS**, and a focus on clean design, smooth interactions, and accessibility. It showcases my work, skills, and ways to connect for collaborations.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Stack
+
+- **Framework:** [Next.js 15+](https://nextjs.org)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Fonts:** [Geist](https://vercel.com/font)
+- **Theme Handling:** CSS Variables with localStorage
+- **Deployment:** [Vercel](https://vercel.com)
+
+---
+
+## 🌙 Features
+
+- Dark/light theme toggle with **localStorage sync**
+- **Section scroll with offset** to prevent navbar overlap
+- Responsive layout with consistent spacing and typography
+- Accessible links with hover states and screen reader labels
+- Connect section with branded hover colors (GitHub, LinkedIn, Resume)
+- Clean, reusable component structure (`<Section />`, icons, etc.)
+- Optimized for SEO and fast loading
+
+---
+
+## 🧩 Folder Structure
+
+```
+app/
+├── layout.tsx           # Root layout, sets global styles
+├── page.tsx             # Homepage
+components/
+├── section-title.tsx    # Section wrapper with icon and title
+├── sectionIcons.ts      # Icon mapping per section
+├── navbar.tsx           # Fixed top navbar with active section tracking
+public/
+├── cv.pdf               # Resume download
+styles/
+├── globals.css          # Tailwind and theme variables
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[Vercel](https://vercel.com)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📝 Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Update sections**: Edit `components/` for each section's content.
+- **Change theme colors**: Modify CSS variables in `globals.css`.
+- **Replace resume**: Update `public/cv.pdf`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# akhilesh-portfolio
+---
+
+## 📬 Contact
+
+I'm based in **Hyderabad, India** — always open to remote opportunities and collaborations.
+
+Let’s connect: [GitHub](https://github.com/...), [LinkedIn](https://linkedin.com/in/...), [Resume](./public/cv.pdf)
+
+---
+
+## License
+
+MIT — Feel free to use and remix!
+
+---
+
+Let me know:
+- Do you want this to support multiple themes?
+- Should I include screenshots or deployment instructions?
+
+I'll adjust the README accordingly.

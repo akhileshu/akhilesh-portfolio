@@ -1,14 +1,15 @@
-import stack from "@/data/stack.json";
 import { IconType } from "react-icons";
 import * as SiIcons from "react-icons/si";
-import Section from "./section-title";
-import sectionIcons from "./sectionIcons";
+import Section from "./section";
+import sectionIcons from "../../lib/section-icon";
+import { techStack } from "@/data/tech-stack";
+import { filterVisible } from "@/lib/utils";
 
 export default function Stack() {
   return (
-    <Section Icon={sectionIcons["tech"]} title={"Tools I Use"} id="stack">
+    <Section Icon={sectionIcons["tech"]} id="stack">
       <div className="flex flex-wrap gap-4">
-        {stack.map((tech) => {
+        {filterVisible(techStack).map((tech) => {
           let Icon: IconType = SiIcons.SiCodecrafters;
 
           if (typeof tech.icon === "string" && tech.icon in SiIcons) {

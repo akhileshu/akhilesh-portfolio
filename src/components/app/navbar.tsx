@@ -1,75 +1,140 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { externalLinks } from "@/data/external-links";
+import { sections } from "@/data/sections";
+import ThemeToggle from "@/lib/theme-context";
+import { useScrollToHashOnLoad } from "@/lib/useScrollToHashOnLoad";
+import { cn, filterVisible } from "@/lib/utils";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FaGithub, FaPenNib } from "react-icons/fa";
-import ThemeToggle from "./ThemeToggle";
+import { SetStateAction, useState } from "react";
 
-const sections = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "stack", label: "Stack" },
-  { id: "projects", label: "Projects" },
-  { id: "wirteToMe", label: "wirteToMe" },
-  { id: "connect", label: "Connect" },
-];
-
-
-const externalLinks = [
-  {
-    label: "Code",
-    href: "https://github.com/akhilesh/portfolio",
-    target: "_blank",
-    icon: <FaGithub size={16} />,
-    title: "View on GitHub",
-  },
-  {
-    label: "Blog",
-    href: "https://your-blog-url.com", // replace with actual blog URL
-    target: "_blank",
-    icon: <FaPenNib size={16} />,
-    title: "Explore Tech Blogs",
-  },
-];
-
+type SetCurrentHash = (value: SetStateAction<string>) => void;
+type isCurrent = (id: string) => boolean;
 export default function Navbar() {
-  const [currentHash, setCurrentHash] = useState<string>("");
-
-  useEffect(() => {
-    setCurrentHash(window.location.hash);
-  }, []);
+  useScrollToHashOnLoad();
+  const [currentHash, setCurrentHash] = useState<string>(window.location.hash);
+  const isCurrent: isCurrent = (id: string) => {
+    return currentHash === `#${id}`;
+  };
 
   return (
-    <nav className="fixed top-0 w-full bg-card  shadow z-50">
-      <div className="flex justify-center space-x-6 p-2">
-        {sections.map(({ id, label }) => (
+    <nav className="fixed top-0 w-full bg-card shadow z-50">
+      <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between md:justify-around items-center">
+        <Link
+          href={"#home"}
+          onClick={() => setCurrentHash("#home")}
+          className={cn("text-lg font-bold")}
+        >
+          Akhilesh
+        </Link>
+        <div className=""></div>
+
+        <DesktopMenu isCurrent={isCurrent} setCurrentHash={setCurrentHash} />
+
+        <MobileMenu isCurrent={isCurrent} setCurrentHash={setCurrentHash} />
+      </div>
+    </nav>
+  );
+}
+
+export const DesktopMenu = ({
+  setCurrentHash,
+  isCurrent,
+}: {
+  setCurrentHash: SetCurrentHash;
+  isCurrent: isCurrent;
+}) => (
+  <>
+    <NavLinks
+      className="hidden md:flex items-center gap-4"
+      setCurrentHash={setCurrentHash}
+      isCurrent={isCurrent}
+    />
+    <ThemeToggle className="hidden md:flex" />
+  </>
+);
+
+export const MobileMenu = ({
+  setCurrentHash,
+  isCurrent,
+}: {
+  setCurrentHash: SetCurrentHash;
+  isCurrent: isCurrent;
+}) => (
+  <div className={cn("flex gap-1 md:hidden")}>
+    <ThemeToggle />
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button size="icon" variant="ghost">
+          <Menu className="w-5 h-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right" className="w-64">
+        <NavLinks
+          className="flex flex-col gap-4 m-6"
+          setCurrentHash={setCurrentHash}
+          isCurrent={isCurrent}
+          isMobile
+        />
+      </SheetContent>
+    </Sheet>
+  </div>
+);
+
+const NavLinks = ({
+  setCurrentHash,
+  isCurrent,
+  isMobile = false,
+  className,
+}: {
+  setCurrentHash: SetCurrentHash;
+  isCurrent: isCurrent;
+  isMobile?: boolean;
+  className?: string;
+}) => (
+  <div
+    className={cn(
+      "flex gap-4 flex-col md:flex-row divide-foreground divide-y md:divide-x md:divide-y-0 ",
+      className
+    )}
+  >
+    <div className="flex gap-4 flex-col md:flex-row md:pr-4 pb-4 md:pb-0">
+      {sections
+        .filter((section) => !section.excludeFromNav)
+        .map(({ id, label }) => (
           <Link
-            onClick={() => setCurrentHash(`#${id}`)}
             key={id}
             href={`#${id}`}
+            onClick={() => setCurrentHash(`#${id}`)}
             className={cn("hover:text-accent transition-colors", {
-              "text-accent font-bold": currentHash === `#${id}`,
+              "text-accent font-bold": isCurrent(id),
             })}
           >
             {label}
           </Link>
         ))}
-        <ThemeToggle />
-        {externalLinks.map((link) => (
-          <Link
-            title={link.title}
-            key={link.href}
-            href={link.href}
-            target={link.target}
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-link transition-colors"
-          >
-            {link.label}
-            {link.icon}
-          </Link>
-        ))}
-      </div>
-    </nav>
-  );
-}
+    </div>
+
+    <div className="flex gap-4 flex-col md:flex-row">
+      {filterVisible(externalLinks).map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          target={link.target}
+          rel="noopener noreferrer"
+          className={cn(
+            "flex items-center gap-1 hover:text-link transition-colors",
+            { "mt-2": isMobile }
+          )}
+          title={link.title}
+        >
+          {link.label}
+          {link.icon}
+        </Link>
+      ))}
+    </div>
+  </div>
+);

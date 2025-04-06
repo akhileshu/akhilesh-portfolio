@@ -4,6 +4,7 @@ import WirteToMe from "@/components/app/write-to-me";
 import Hero from "@/components/app/hero";
 import Projects from "@/components/app/projects";
 import Connect from "@/components/app/connect";
+import Experience from "@/components/app/experience";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <About />
       <Stack />
       <Projects />
+      <Experience />
       <Connect />
       <WirteToMe />
     </main>

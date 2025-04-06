@@ -1,26 +1,9 @@
 "use client";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
-import Section from "./section-title";
-import sectionIcons from "./sectionIcons";
-
-const connectLinks = [
-  {
-    href: "placeholder_github",
-    label: "GitHub",
-    icon: <FaGithub />,
-  },
-  {
-    href: "placeholder_linkedin",
-    label: "LinkedIn",
-    icon: <FaLinkedin />,
-  },
-  {
-    href: "/cv.pdf",
-    label: "Resume",
-    icon: <FaFileAlt />,
-  },
-];
+import Section from "./section";
+import sectionIcons from "../../lib/section-icon";
+import { connectLinks } from "@/data/connect-links";
+import { filterVisible } from "@/lib/utils";
 
 export default function Connect() {
   return (
@@ -28,7 +11,6 @@ export default function Connect() {
       Icon={sectionIcons["connect"]}
       id="connect"
       className=""
-      title={"Let's Build Something Amazing!"}
     >
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-lg  mb-8">
@@ -39,14 +21,14 @@ export default function Connect() {
         </p>
 
         <div className="flex justify-center gap-10 text-4xl">
-          {connectLinks.map(({ href, label, icon }) => (
+          {filterVisible(connectLinks).map(({ href, label, icon }) => (
             <Link
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className={ "transition-all duration-300 hover:text-link-hover"}
+              className={"transition-all duration-300 hover:text-link-hover"}
             >
               {icon}
             </Link>
