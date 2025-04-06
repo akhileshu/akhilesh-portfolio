@@ -1,0 +1,13 @@
+4. Improve On-Page SEO
+Use <h1> only once (on your name or tagline)
+
+Use <h2> for sections like Stack, Projects, Contact
+
+Use alt text for images/icons
+
+Add aria-label and semantic HTML
+
+Lazy-load non-visible components
+
+Set favicon in public/
+
