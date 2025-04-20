@@ -24,6 +24,17 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "NextAuth.js", "Prisma"],
   },
   {
+    title: "ModuleCrafter CLI",
+    description:
+      "A powerful CLI to import and sync reusable feature modules or bootstrap full projects from GitHub — no manual cloning, copying, or dependency headaches.",
+    image: "/projects/modcraft-stop-cp.png",
+    video: null,
+    link: "https://github.com/akhileshu/modulecrafter",
+    github: "https://github.com/akhileshu/modulecrafter",
+    releaseNotes: null,
+    tech: ["Node.js", "TypeScript", "Commander.js", "Inquirer"],
+  },
+  {
     title: "TaskZen",
     description:
       "A minimal and fast productivity app with offline support, reminders, and a clean UX.",
