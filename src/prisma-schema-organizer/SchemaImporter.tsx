@@ -27,6 +27,7 @@ export function SchemaImporter({ onSchemaLoad }: SchemaImporterProps) {
       const text = await navigator.clipboard.readText();
       onSchemaLoad(text);
     } catch (err) {
+      console.error("Clipboard read error:", err);
       // Fallback: show textarea
       const text = prompt("Paste your Prisma schema here:");
       if (text) onSchemaLoad(text);

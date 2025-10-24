@@ -1,7 +1,6 @@
 // app/page.tsx (updated)
 "use client";
 
-import React, { useState, useEffect } from "react";
 import {
   DndContext,
   DragEndEvent,
@@ -11,16 +10,17 @@ import {
 } from "@dnd-kit/core";
 import {
   SortableContext,
-  verticalListSortingStrategy,
   arrayMove,
+  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import React, { useState } from "react";
+import { AddSplitButton } from "./AddSplitButton";
 import { FileExporter } from "./FileExporter.tsx";
 import { SchemaImporter } from "./SchemaImporter";
 import { SchemaItem } from "./SchemaItem";
 import { useSchemaStore } from "./schemaStore";
 import { SplitMarker } from "./SplitMarker";
 import { SchemaElement, SplitPoint } from "./types";
-import { AddSplitButton } from "./AddSplitButton";
 
 /**
  *
@@ -34,9 +34,7 @@ export default function PrismaSchemaOrganizer() {
   const {
     elements,
     splitPoints,
-    draggedElement,
     setElements,
-    setSplitPoints,
     setDraggedElement,
     loadSchemaFromText,
     addSplitPoint,
@@ -66,6 +64,7 @@ export default function PrismaSchemaOrganizer() {
   };
 
   const handleDragOver = (event: DragOverEvent) => {
+    console.log({event})
     // Visual feedback during drag - could highlight potential drop zones
   };
 

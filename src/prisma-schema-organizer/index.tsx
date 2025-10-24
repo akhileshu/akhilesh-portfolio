@@ -24,9 +24,7 @@ export default function PrismaSchemaOrganizer() {
   const {
     elements,
     splitPoints,
-    draggedElement,
     setElements,
-    setSplitPoints,
     setDraggedElement,
     loadSchemaFromText,
     addSplitPoint,
@@ -44,6 +42,7 @@ export default function PrismaSchemaOrganizer() {
   };
 
   const handleDragOver = (event: DragOverEvent) => {
+    console.log({event})
     // Visual feedback during drag - could highlight potential drop zones
   };
 
