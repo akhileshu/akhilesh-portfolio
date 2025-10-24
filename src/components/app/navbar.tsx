@@ -29,7 +29,7 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full bg-card shadow z-50">
       <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between md:justify-around items-center">
         <Link
-          href={"#home"}
+          href={"/#home"}
           onClick={() => setCurrentHash("#home")}
           className={cn("text-lg font-bold")}
         >
@@ -109,11 +109,15 @@ const NavLinks = ({
     <div className="flex gap-4 flex-col md:flex-row md:pr-4 pb-4 md:pb-0">
       {sections
         .filter((section) => !section.excludeFromNav)
-        .map(({ id, label }) => (
+        .map(({ id, label, excludeFromHash }) => (
           <Link
             key={id}
-            href={`#${id}`}
-            onClick={() => setCurrentHash(`#${id}`)}
+            href={excludeFromHash ? `/${id}` : `/#${id}`}
+            onClick={() => {
+              if (excludeFromHash)
+                window.scrollTo({ top: 0, behavior: "instant" });
+              else setCurrentHash(`#${id}`);
+            }}
             className={cn("hover:text-accent transition-colors", {
               "text-accent font-bold": isCurrent(id),
             })}
